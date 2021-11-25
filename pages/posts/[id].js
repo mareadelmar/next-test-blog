@@ -9,6 +9,8 @@ export default function Post({ postData }) {
 			{postData.id}
 			<br />
 			{postData.date}
+			<br />
+			<div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
 		</Layout>
 	);
 }
@@ -24,7 +26,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	const postData = getPostData(params.id);
+	const postData = await getPostData(params.id);
+
 	return {
 		props: {
 			postData,
@@ -35,4 +38,6 @@ export async function getStaticProps({ params }) {
  * paths contiene el array de paths que retorna getAllPostIds
  *
  * fallback: false --> qué es?
+ *
+ * cómo sabe getStaticProps que la key se llama id? Por el nombre del archivo.
  */
