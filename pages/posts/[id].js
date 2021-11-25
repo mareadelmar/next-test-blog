@@ -45,7 +45,7 @@ export async function getStaticProps({ params }) {
 /**
  * paths contiene el array de paths que retorna getAllPostIds
  *
- * fallback: false --> qué es?
+ * fallback: false --> any paths not returned by getStaticPaths will result in a 404 page
  *
  * cómo sabe getStaticProps que la key se llama id? Por el nombre del archivo.
  */
